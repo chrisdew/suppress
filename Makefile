@@ -14,7 +14,7 @@
 # PARTICULAR PURPOSE.
 
 
-VPATH = /home/chris/juno-c-workspace/suppress
+
 pkgdatadir = $(datadir)/suppress
 pkgincludedir = $(includedir)/suppress
 pkglibdir = $(libdir)/suppress
@@ -146,9 +146,9 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = 
 VERSION = 1.0
-abs_builddir = /home/chris/juno-c-workspace/suppress/
+abs_builddir = /home/chris/juno-c-workspace/suppress
 abs_srcdir = /home/chris/juno-c-workspace/suppress
-abs_top_builddir = /home/chris/juno-c-workspace/suppress/
+abs_top_builddir = /home/chris/juno-c-workspace/suppress
 abs_top_srcdir = /home/chris/juno-c-workspace/suppress
 ac_ct_CC = gcc
 am__include = include
@@ -190,7 +190,7 @@ program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
-srcdir = /home/chris/juno-c-workspace/suppress
+srcdir = .
 sysconfdir = ${prefix}/etc
 target = x86_64-unknown-linux-gnu
 target_alias = 
@@ -199,7 +199,7 @@ target_os = linux-gnu
 target_vendor = unknown
 top_build_prefix = 
 top_builddir = .
-top_srcdir = /home/chris/juno-c-workspace/suppress
+top_srcdir = .
 SUBDIRS = src
 all: all-recursive
 

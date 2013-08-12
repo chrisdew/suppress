@@ -15,7 +15,7 @@
 
 
 
-VPATH = /home/chris/juno-c-workspace/suppress/src
+
 pkgdatadir = $(datadir)/suppress
 pkgincludedir = $(includedir)/suppress
 pkglibdir = $(libdir)/suppress
@@ -50,7 +50,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am_a_out_OBJECTS = suppress.$(OBJEXT)
 a_out_OBJECTS = $(am_a_out_OBJECTS)
 a_out_LDADD = $(LDADD)
-DEFAULT_INCLUDES = -I. -I$(srcdir)
+DEFAULT_INCLUDES = -I.
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
@@ -104,9 +104,9 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = 
 VERSION = 1.0
-abs_builddir = /home/chris/juno-c-workspace/suppress//src
+abs_builddir = /home/chris/juno-c-workspace/suppress/src
 abs_srcdir = /home/chris/juno-c-workspace/suppress/src
-abs_top_builddir = /home/chris/juno-c-workspace/suppress/
+abs_top_builddir = /home/chris/juno-c-workspace/suppress
 abs_top_srcdir = /home/chris/juno-c-workspace/suppress
 ac_ct_CC = gcc
 am__include = include
@@ -148,7 +148,7 @@ program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
-srcdir = /home/chris/juno-c-workspace/suppress/src
+srcdir = .
 sysconfdir = ${prefix}/etc
 target = x86_64-unknown-linux-gnu
 target_alias = 
@@ -157,7 +157,7 @@ target_os = linux-gnu
 target_vendor = unknown
 top_build_prefix = ../
 top_builddir = ..
-top_srcdir = /home/chris/juno-c-workspace/suppress
+top_srcdir = ..
 a_out_SOURCES = suppress.c
 all: all-am
 
