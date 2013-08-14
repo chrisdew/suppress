@@ -111,12 +111,12 @@ AUTOCONF = ${SHELL} /home/chris/juno-c-workspace/suppress/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/chris/juno-c-workspace/suppress/missing --run autoheader
 AUTOMAKE = ${SHELL} /home/chris/juno-c-workspace/suppress/missing --run automake-1.11
 AWK = gawk
-CC = gcc
+CC = gcc -std=gnu99
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPPFLAGS = 
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"suppress\" -DPACKAGE_TARNAME=\"suppress\" -DPACKAGE_VERSION=\"1.0\" -DPACKAGE_STRING=\"suppress\ 1.0\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"suppress\" -DVERSION=\"1.0\"
+DEFS = -DPACKAGE_NAME=\"suppress\" -DPACKAGE_TARNAME=\"suppress\" -DPACKAGE_VERSION=\"0.0.1\" -DPACKAGE_STRING=\"suppress\ 0.0.1\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"suppress\" -DVERSION=\"0.0.1\"
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
@@ -137,15 +137,15 @@ OBJEXT = o
 PACKAGE = suppress
 PACKAGE_BUGREPORT = 
 PACKAGE_NAME = suppress
-PACKAGE_STRING = suppress 1.0
+PACKAGE_STRING = suppress 0.0.1
 PACKAGE_TARNAME = suppress
 PACKAGE_URL = 
-PACKAGE_VERSION = 1.0
+PACKAGE_VERSION = 0.0.1
 PATH_SEPARATOR = :
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 1.0
+VERSION = 0.0.1
 abs_builddir = /home/chris/juno-c-workspace/suppress
 abs_srcdir = /home/chris/juno-c-workspace/suppress
 abs_top_builddir = /home/chris/juno-c-workspace/suppress

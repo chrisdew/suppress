@@ -35,7 +35,7 @@ POST_UNINSTALL = :
 build_triplet = x86_64-unknown-linux-gnu
 host_triplet = x86_64-unknown-linux-gnu
 target_triplet = x86_64-unknown-linux-gnu
-bin_PROGRAMS = a.out$(EXEEXT)
+bin_PROGRAMS = suppress$(EXEEXT) killzombie$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -47,9 +47,14 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_a_out_OBJECTS = suppress.$(OBJEXT)
-a_out_OBJECTS = $(am_a_out_OBJECTS)
-a_out_LDADD = $(LDADD)
+am_killzombie_OBJECTS = debug.$(OBJEXT) killzombie.$(OBJEXT)
+killzombie_OBJECTS = $(am_killzombie_OBJECTS)
+killzombie_LDADD = $(LDADD)
+am_suppress_OBJECTS = suppress.$(OBJEXT) commander.$(OBJEXT) \
+	debug.$(OBJEXT) addresses.$(OBJEXT) loop.$(OBJEXT) \
+	state.$(OBJEXT)
+suppress_OBJECTS = $(am_suppress_OBJECTS)
+suppress_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -58,8 +63,8 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(a_out_SOURCES)
-DIST_SOURCES = $(a_out_SOURCES)
+SOURCES = $(killzombie_SOURCES) $(suppress_SOURCES)
+DIST_SOURCES = $(killzombie_SOURCES) $(suppress_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -69,12 +74,12 @@ AUTOCONF = ${SHELL} /home/chris/juno-c-workspace/suppress/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/chris/juno-c-workspace/suppress/missing --run autoheader
 AUTOMAKE = ${SHELL} /home/chris/juno-c-workspace/suppress/missing --run automake-1.11
 AWK = gawk
-CC = gcc
+CC = gcc -std=gnu99
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPPFLAGS = 
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"suppress\" -DPACKAGE_TARNAME=\"suppress\" -DPACKAGE_VERSION=\"1.0\" -DPACKAGE_STRING=\"suppress\ 1.0\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"suppress\" -DVERSION=\"1.0\"
+DEFS = -DPACKAGE_NAME=\"suppress\" -DPACKAGE_TARNAME=\"suppress\" -DPACKAGE_VERSION=\"0.0.1\" -DPACKAGE_STRING=\"suppress\ 0.0.1\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"suppress\" -DVERSION=\"0.0.1\"
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
@@ -95,15 +100,15 @@ OBJEXT = o
 PACKAGE = suppress
 PACKAGE_BUGREPORT = 
 PACKAGE_NAME = suppress
-PACKAGE_STRING = suppress 1.0
+PACKAGE_STRING = suppress 0.0.1
 PACKAGE_TARNAME = suppress
 PACKAGE_URL = 
-PACKAGE_VERSION = 1.0
+PACKAGE_VERSION = 0.0.1
 PATH_SEPARATOR = :
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 1.0
+VERSION = 0.0.1
 abs_builddir = /home/chris/juno-c-workspace/suppress/src
 abs_srcdir = /home/chris/juno-c-workspace/suppress/src
 abs_top_builddir = /home/chris/juno-c-workspace/suppress
@@ -158,7 +163,8 @@ target_vendor = unknown
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-a_out_SOURCES = suppress.c
+suppress_SOURCES = suppress.c commander.c debug.c addresses.c loop.c state.c
+killzombie_SOURCES = debug.c killzombie.c
 all: all-am
 
 .SUFFIXES:
@@ -230,9 +236,12 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-a.out$(EXEEXT): $(a_out_OBJECTS) $(a_out_DEPENDENCIES) $(EXTRA_a_out_DEPENDENCIES) 
-	@rm -f a.out$(EXEEXT)
-	$(LINK) $(a_out_OBJECTS) $(a_out_LDADD) $(LIBS)
+killzombie$(EXEEXT): $(killzombie_OBJECTS) $(killzombie_DEPENDENCIES) $(EXTRA_killzombie_DEPENDENCIES) 
+	@rm -f killzombie$(EXEEXT)
+	$(LINK) $(killzombie_OBJECTS) $(killzombie_LDADD) $(LIBS)
+suppress$(EXEEXT): $(suppress_OBJECTS) $(suppress_DEPENDENCIES) $(EXTRA_suppress_DEPENDENCIES) 
+	@rm -f suppress$(EXEEXT)
+	$(LINK) $(suppress_OBJECTS) $(suppress_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -240,6 +249,12 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/addresses.Po
+include ./$(DEPDIR)/commander.Po
+include ./$(DEPDIR)/debug.Po
+include ./$(DEPDIR)/killzombie.Po
+include ./$(DEPDIR)/loop.Po
+include ./$(DEPDIR)/state.Po
 include ./$(DEPDIR)/suppress.Po
 
 .c.o:
